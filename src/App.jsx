@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
-import { useAuth } from './hooks/useAuth'
+import { AuthProvider, useAuth } from './context/AuthContext' // Fixed import
 import Header from './components/common/Header'
 import Footer from './components/common/Footer'
 import Loader from './components/common/Loader'
@@ -74,6 +73,34 @@ const AppLayout = ({ children }) => {
     </div>
   )
 }
+
+// Placeholder components for routes (these will be separate files later)
+const MyPosts = () => (
+  <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="text-center">
+      <h1 className="text-3xl font-bold text-gray-900 mb-4">My Posts</h1>
+      <p className="text-gray-600">Manage your investment posts here.</p>
+    </div>
+  </div>
+)
+
+const MyInvestments = () => (
+  <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="text-center">
+      <h1 className="text-3xl font-bold text-gray-900 mb-4">My Investments</h1>
+      <p className="text-gray-600">Track your investment interests and portfolio here.</p>
+    </div>
+  </div>
+)
+
+const MyClients = () => (
+  <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="text-center">
+      <h1 className="text-3xl font-bold text-gray-900 mb-4">My Clients</h1>
+      <p className="text-gray-600">Manage your startup clients and seed posts here.</p>
+    </div>
+  </div>
+)
 
 // App Routes Component
 const AppRoutes = () => {
@@ -168,7 +195,7 @@ const AppRoutes = () => {
         } 
       />
 
-      {/* Startup-specific Routes */}
+      {/* Role-specific Routes */}
       <Route 
         path="/my-posts" 
         element={
@@ -178,7 +205,6 @@ const AppRoutes = () => {
         } 
       />
 
-      {/* Investor-specific Routes */}
       <Route 
         path="/my-investments" 
         element={
@@ -188,7 +214,6 @@ const AppRoutes = () => {
         } 
       />
 
-      {/* Consultant-specific Routes */}
       <Route 
         path="/my-clients" 
         element={
@@ -203,34 +228,6 @@ const AppRoutes = () => {
     </Routes>
   )
 }
-
-// Placeholder components for routes that don't exist yet
-const MyPosts = () => (
-  <div className="max-w-7xl mx-auto px-4 py-8">
-    <div className="text-center">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">My Posts</h1>
-      <p className="text-gray-600">Manage your investment posts here.</p>
-    </div>
-  </div>
-)
-
-const MyInvestments = () => (
-  <div className="max-w-7xl mx-auto px-4 py-8">
-    <div className="text-center">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">My Investments</h1>
-      <p className="text-gray-600">Track your investment interests and portfolio here.</p>
-    </div>
-  </div>
-)
-
-const MyClients = () => (
-  <div className="max-w-7xl mx-auto px-4 py-8">
-    <div className="text-center">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">My Clients</h1>
-      <p className="text-gray-600">Manage your startup clients and seed posts here.</p>
-    </div>
-  </div>
-)
 
 // Main App Component
 const App = () => {
