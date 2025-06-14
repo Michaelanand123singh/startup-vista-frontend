@@ -126,12 +126,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
         }
       })
 
-      let response
-      if (isEdit) {
-        response = await api.put('/startups/profile', submitData)
-      } else {
-        response = await api.post('/startups/profile', submitData)
-      }
+      const response = await api.updateProfile('startup', submitData)
 
       setSuccess(isEdit ? 'Profile updated successfully!' : 'Profile created successfully!')
       
@@ -255,7 +250,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                 Website
               </label>
               <input
-                type="url"
+                type="text"
                 name="website"
                 value={formData.website}
                 onChange={handleChange}
@@ -269,7 +264,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                 Android App
               </label>
               <input
-                type="url"
+                type="text"
                 name="androidApp"
                 value={formData.androidApp}
                 onChange={handleChange}
@@ -283,7 +278,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                 iOS App
               </label>
               <input
-                type="url"
+                type="text"
                 name="iosApp"
                 value={formData.iosApp}
                 onChange={handleChange}
@@ -304,7 +299,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                 LinkedIn
               </label>
               <input
-                type="url"
+                type="text"
                 name="linkedIn"
                 value={formData.linkedIn}
                 onChange={handleChange}
@@ -318,7 +313,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                 Facebook
               </label>
               <input
-                type="url"
+                type="text"
                 name="facebook"
                 value={formData.facebook}
                 onChange={handleChange}
@@ -332,7 +327,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                 Instagram
               </label>
               <input
-                type="url"
+                type="text"
                 name="instagram"
                 value={formData.instagram}
                 onChange={handleChange}
@@ -346,7 +341,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                 Twitter
               </label>
               <input
-                type="url"
+                type="text"
                 name="twitter"
                 value={formData.twitter}
                 onChange={handleChange}
@@ -405,7 +400,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                   <input
                     type="email"
                     value={founder.email}
-                                        onChange={(e) => handleFounderChange(index, 'email', e.target.value)}
+                    onChange={(e) => handleFounderChange(index, 'email', e.target.value)}
                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                   />
                 </div>
@@ -427,7 +422,7 @@ const StartupForm = ({ onSubmit, initialData = {}, isEdit = false }) => {
                     LinkedIn Profile
                   </label>
                   <input
-                    type="url"
+                    type="text"
                     value={founder.linkedin}
                     onChange={(e) => handleFounderChange(index, 'linkedin', e.target.value)}
                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"

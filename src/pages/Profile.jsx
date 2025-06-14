@@ -1,7 +1,12 @@
+import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import StartupForm from '../components/startup/StartupForm'
+import InvestorForm from '../components/investor/InvestorForm'
+import ConsultantForm from '../components/consultant/ConsultantForm'
 
 const Profile = () => {
   const { user } = useAuth()
+  const [isEditing, setIsEditing] = useState(false)
 
   if (!user) {
     return (
@@ -141,11 +146,14 @@ const Profile = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-slate-700/50">
-                <button className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 font-medium shadow-lg hover:shadow-blue-500/25 flex items-center">
+                <button 
+                  onClick={() => setIsEditing(!isEditing)}
+                  className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 font-medium shadow-lg hover:shadow-blue-500/25 flex items-center"
+                >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
-                  Edit Profile
+                  {isEditing ? 'Cancel Editing' : 'Edit Profile'}
                 </button>
                 
                 <button className="px-6 py-2.5 bg-slate-700/50 text-slate-300 rounded-lg hover:bg-slate-600/50 transition-all duration-200 font-medium border border-slate-600/50 flex items-center">
@@ -155,6 +163,40 @@ const Profile = () => {
                   Change Password
                 </button>
               </div>
+
+              {/* Form section for editing */}
+              {isEditing && (
+                <div className="mt-8">
+                  {user.role === 'startup' && (
+                    <StartupForm 
+                      initialData={user.startup} 
+                      isEdit={true}
+                      onSubmit={() => {
+                        setIsEditing(false)
+                        // Add logic to refresh user data
+                      }}
+                    />
+                  )}
+                  {user.role === 'investor' && (
+                    <InvestorForm 
+                      initialData={user.investor}
+                      onSubmit={() => {
+                        setIsEditing(false)
+                        // Add logic to refresh user data
+                      }}
+                    />
+                  )}
+                  {user.role === 'consultant' && (
+                    <ConsultantForm 
+                      initialData={user.consultant}
+                      onSubmit={() => {
+                        setIsEditing(false)
+                        // Add logic to refresh user data
+                      }}
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

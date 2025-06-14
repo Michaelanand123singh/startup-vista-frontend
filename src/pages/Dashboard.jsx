@@ -1,9 +1,10 @@
 import { useAuth } from '../context/AuthContext'
 import { USER_ROLES } from '../utils/constants'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
   const { user } = useAuth()
+  const navigate = useNavigate()
 
   if (!user) {
     return (
@@ -76,6 +77,26 @@ const Dashboard = () => {
     }
   }
 
+  const handleCreatePost = () => {
+    navigate('/create-post')
+  }
+
+  const handleCreateSeedPost = () => {
+    navigate('/create-seed-post')
+  }
+
+  const handleViewMyPosts = () => {
+    navigate('/my-posts')
+  }
+
+  const handleViewPortfolio = () => {
+    navigate('/my-investments')
+  }
+
+  const handleViewClients = () => {
+    navigate('/my-clients')
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-8 px-4">
       <div className="max-w-7xl mx-auto">
@@ -141,7 +162,10 @@ const Dashboard = () => {
                 <p className="text-slate-400 mb-6 leading-relaxed">
                   Showcase your startup and attract potential investors with detailed funding requirements
                 </p>
-                <button className="w-full px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-200 font-medium shadow-lg hover:shadow-orange-500/25">
+                <button 
+                  onClick={handleCreatePost}
+                  className="w-full px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-200 font-medium shadow-lg hover:shadow-orange-500/25"
+                >
                   Create Post
                 </button>
               </div>
@@ -160,7 +184,10 @@ const Dashboard = () => {
                 <p className="text-slate-400 mb-6 leading-relaxed">
                   Manage and track performance of your published funding posts and investor engagement
                 </p>
-                <button className="w-full px-4 py-3 bg-slate-700/50 text-slate-300 rounded-lg hover:bg-slate-600/50 transition-all duration-200 font-medium border border-slate-600/50">
+                <button 
+                  onClick={handleViewMyPosts}
+                  className="w-full px-4 py-3 bg-slate-700/50 text-slate-300 rounded-lg hover:bg-slate-600/50 transition-all duration-200 font-medium border border-slate-600/50"
+                >
                   View My Posts
                 </button>
               </div>
@@ -205,7 +232,10 @@ const Dashboard = () => {
                 <p className="text-slate-400 mb-6 leading-relaxed">
                   Monitor your investment interests, track due diligence, and manage your startup portfolio
                 </p>
-                <button className="w-full px-4 py-3 bg-slate-700/50 text-slate-300 rounded-lg hover:bg-slate-600/50 transition-all duration-200 font-medium border border-slate-600/50">
+                <button 
+                  onClick={handleViewPortfolio}
+                  className="w-full px-4 py-3 bg-slate-700/50 text-slate-300 rounded-lg hover:bg-slate-600/50 transition-all duration-200 font-medium border border-slate-600/50"
+                >
                   View Portfolio
                 </button>
               </div>
@@ -228,7 +258,10 @@ const Dashboard = () => {
                 <p className="text-slate-400 mb-6 leading-relaxed">
                   Post seed funding opportunities and connect promising startups with early-stage investors
                 </p>
-                <button className="w-full px-4 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-lg hover:from-purple-600 hover:to-indigo-600 transition-all duration-200 font-medium shadow-lg hover:shadow-purple-500/25">
+                <button 
+                  onClick={handleCreateSeedPost}
+                  className="w-full px-4 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-lg hover:from-purple-600 hover:to-indigo-600 transition-all duration-200 font-medium shadow-lg hover:shadow-purple-500/25"
+                >
                   Create Seed Post
                 </button>
               </div>
@@ -247,7 +280,10 @@ const Dashboard = () => {
                 <p className="text-slate-400 mb-6 leading-relaxed">
                   Track and manage your portfolio of startups, monitor their growth and success metrics
                 </p>
-                <button className="w-full px-4 py-3 bg-slate-700/50 text-slate-300 rounded-lg hover:bg-slate-600/50 transition-all duration-200 font-medium border border-slate-600/50">
+                <button 
+                  onClick={handleViewClients}
+                  className="w-full px-4 py-3 bg-slate-700/50 text-slate-300 rounded-lg hover:bg-slate-600/50 transition-all duration-200 font-medium border border-slate-600/50"
+                >
                   View Portfolio
                 </button>
               </div>

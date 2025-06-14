@@ -19,25 +19,6 @@ const Loader = () => {
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-purple-400 rounded-full"></div>
         </div>
       </div>
-      
-      {/* Loading text */}
-      <div className="mt-6 text-center">
-        <div className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-2">
-          Loading...
-        </div>
-        
-        {/* Animated dots */}
-        <div className="flex justify-center space-x-1">
-          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-          <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-        </div>
-      </div>
-      
-      {/* Progress bar (optional - can be hidden with additional prop) */}
-      <div className="mt-4 w-32 h-1 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-        <div className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
-      </div>
     </div>
   )
 }
